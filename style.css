@@ -1,0 +1,191 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --grid-bg: #ffffff;
+  --grid-border: #000000;
+  --button-bg: #00bfff;
+  --button-text: #ffffff;
+  --button-hover: #009acd;
+  --end-message-bg: rgba(255, 255, 255, 0.8);
+}
+
+.dark-mode {
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+  --grid-bg: #2a2a2a;
+  --grid-border: #ffffff;
+  --button-bg: #00688b;
+  --button-text: #ffffff;
+  --button-hover: #004f6b;
+  --end-message-bg: rgba(42, 42, 42, 0.8);
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.titulo {
+  text-align: center;
+  font-family: "Permanent Marker", cursive;
+  font-weight: 400;
+  font-style: normal;
+  margin-bottom: 15px;
+}
+
+.title {
+  color: var(--button-bg);
+  text-shadow: 2px 2px 0px var(--text-color);
+  margin-bottom: 10px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(60px, 100px));
+  grid-template-rows: repeat(3, minmax(60px, 100px));
+  gap: 2px;
+  background-color: var(--grid-bg);
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--grid-bg);
+  color: var(--text-color);
+  font-size: 20px;
+  box-sizing: border-box;
+  border: 2px solid var(--grid-border);
+  width: 100%;
+  height: 100%;
+  min-width: 60px;
+  min-height: 60px;
+}
+
+.grid-item:hover {
+  background-color: var(--button-bg);
+}
+
+/* Specific border styles for grid items */
+#item1,
+#item2,
+#item3 {
+  border-bottom: 2px solid var(--grid-border);
+}
+#item4,
+#item5,
+#item6 {
+  border-top: 2px solid var(--grid-border);
+  border-bottom: 2px solid var(--grid-border);
+}
+#item7,
+#item8,
+#item9 {
+  border-top: 2px solid var(--grid-border);
+}
+#item1,
+#item4,
+#item7 {
+  border-right: 2px solid var(--grid-border);
+}
+#item2,
+#item5,
+#item8 {
+  border-left: 2px solid var(--grid-border);
+  border-right: 2px solid var(--grid-border);
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.controls button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 2px solid var(--button-bg);
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+.mode-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000; /* Asegúrate de que el botón esté sobre otros elementos */
+  padding: 5px 5px;
+  font-size: 10px;
+  cursor: pointer;
+  border-radius: 12px; /* Ajusta el valor para cambiar el redondeo */
+  border: none; /* Opcional: para quitar el borde predeterminado */
+  background-color: var(--button-bg); /* Cambia el color de fondo */
+  color: var(--button-text); /* Cambia el color del texto */
+}
+
+.hidden {
+  display: none;
+  background-color: var(--bg-color);
+}
+
+.controls button:hover,
+.mode-toggle:hover {
+  background-color: var(--button-hover);
+}
+
+.confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+#endMessage {
+  position: relative;
+  z-index: 1001;
+  text-align: center;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.message {
+  margin: 10px;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .grid-container {
+    grid-template-columns: repeat(3, minmax(60px, 80px));
+    grid-template-rows: repeat(3, minmax(60px, 80px));
+  }
+  .controls button,
+  .mode-toggle {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  .titulo {
+    font-size: 24px;
+  }
+}
